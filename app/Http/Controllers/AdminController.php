@@ -17,8 +17,8 @@ class AdminController extends Controller
             return redirect()->route('adminPannel', ['admin'=>Auth::guard('admin')->user()]);
         }
    
-       // Authentication failed, return an error response
-       return response()->json(['error' => 'Invalid credentials'], 401);
+        // respond with error message and do not reload the page
+        return Inertia::render('LoginAdmin')->with('error','The credentials do not match our records , maybe you are not an admin.');
     }
 
     function adminPannel(){
@@ -50,6 +50,11 @@ class AdminController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required',
+        ],[
+            'name.required' => 'Name is required',
+            'email.required' => 'Email is required',
+            'email.email' => 'Email is not valid',
+            'password.required' => 'Password is required',
         ]);
         $admin = admin::create([
             'name' => $request->name,

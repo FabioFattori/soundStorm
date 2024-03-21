@@ -18,14 +18,16 @@ class UserController extends Controller
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
+        ], [
+            'email.required' => 'Email is required',
+            'email.email' => 'Email is not valid',
+            'password.required' => 'Password is required',
         ]);
         if (Auth::attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
             return Inertia::render('UserProfile', ['user' => Auth::user()])->with('success', 'You are now logged in.');
         }
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
+        return Inertia::render('LoginUser', ['error' => 'The provided credentials do not match our records, maybe try to register.']);
     }
 
     public function logout()
@@ -71,9 +73,4 @@ class UserController extends Controller
         return Inertia::render('UserProfile', ['user' => Auth::user()])->with('success', 'You are now logged in.');
     }
 
-    public function removeUser()
-    {
-        Auth::user()->delete();
-        return redirect('/')->with('success', 'You are now logged out.');
-    }
 }

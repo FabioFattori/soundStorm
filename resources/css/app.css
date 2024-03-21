@@ -38,3 +38,48 @@ h1{
     flex-direction: row;
 }
 
+.alertCustom{
+    /* set position to the fixed top right */
+    position: fixed;
+    top: 10%;
+    right: 0;
+    z-index: 9998;
+    width: 40%;
+}
+
+/* HTML: <div class="loader"></div> */
+.bgLoader{
+    position: fixed;
+    background-color: rgba(57, 57, 57, 0.626);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader {
+    
+    --s: 200px;
+    --_d: calc(0.353*var(--s));
+    
+    height: calc(var(--s) + var(--_d));
+    aspect-ratio: 1;
+    display: grid;
+  }
+  .loader:before {
+    content: "";
+    height: 100%;
+    margin: auto 0;
+    clip-path: polygon(var(--_d) 0,100% 0,100% calc(100% - var(--_d)),calc(100% - var(--_d)) 100%,0 100%,0 var(--_d));
+    background:
+      conic-gradient(from -90deg at var(--s) var(--_d),
+       #fff 135deg,#666 0 270deg,#aaa 0);
+    animation: l3 .8s infinite alternate;
+  }
+  @keyframes l3{
+    100% {height:40%}
+  }

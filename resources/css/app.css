@@ -1,0 +1,40 @@
+:root {
+    --HeadingFont: "Alegreya Sans";
+    --BodyFont: "Open Sans ExtraBold";
+    --SubheadingFont: "Times New Roman";
+}
+
+/* Path: resources/css/app.css */
+body {
+    width: 100%;
+    font-family: var(--BodyFont);
+
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    font-family: var(--HeadingFont);
+    font-size: 3em;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.logo{
+    width: 80px;
+    height: 80px;
+    display: block;
+}
+
+.rowContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+

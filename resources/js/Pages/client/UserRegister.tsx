@@ -1,5 +1,5 @@
-import RegisterForm from '../../Components/RegisterForm'
-import Layout from '../../Components/Layout'
+import RegisterForm from '../../Components/Forms/RegisterForm'
+import Layout from '../../Components/layout/Layout'
 
 function UserRegister() {
   return (

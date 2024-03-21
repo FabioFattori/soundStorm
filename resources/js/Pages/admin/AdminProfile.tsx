@@ -1,5 +1,5 @@
 
-import Layout from '../../Components/Layout'
+import Layout from '../../Components/layout/Layout'
 import useProps from '../../Hooks/useProps'
 import { router } from '@inertiajs/react';
 

@@ -7,15 +7,17 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+// Home route
 Route::get('/', function () {
     if(Auth::user()){
-        return Inertia::render('Home',['user'=>Auth::user()]);
+        return Inertia::render('client/Home',['user'=>Auth::user()]);
     }else if(Auth::guard('admin')->check()){
         return Inertia::render('client/Home',['admin'=>Auth::guard('admin')->user()]);
     }
     return Inertia::render('client/Home');
 });
 
+// routes fot the login and register of the admin and the user 
 Route::get("/adminPannel",[AdminController::class,"adminPannel"])->name("adminPannel");
 Route::get("/loginAdmin",[AdminController::class,"loginAdmin"]);
 Route::get("/logUser",[UserController::class,"goToLogin"]);
@@ -24,9 +26,12 @@ Route::post("/regUser",[UserController::class,"register"]);
 Route::get("/logOut",[UserController::class,"logout"]);
 Route::get("/loginUser",[UserController::class,"login"]);
 Route::get("/registerAdmin",[AdminController::class,"goToRegister"]);
-Route::get("/Profile",[UserController::class,"profile"]);
 Route::post("/regAdmin",[AdminController::class,"register"]);
 Route::get("/logAdmin",[AdminController::class,"goToLogin"]);
+
+// routes for the user and the admin profile page
+Route::get("/Profile",[UserController::class,"profile"]);
+
 
 
 

@@ -1,9 +1,8 @@
-import React from 'react'
 import HomeIcon from '@mui/icons-material/Home';
 import PersonIcon from '@mui/icons-material/Person';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import { BottomNavigation, BottomNavigationAction } from '@mui/material';
-import useProps from '../Hooks/useProps';
+import useProps from '../../Hooks/useProps';
 import { router } from '@inertiajs/react';
 
 function Footer() {
@@ -27,11 +26,16 @@ function Footer() {
       label: user == null ? "Login" : "Profilo",
       icon: <PersonIcon />,
       onClick: () => goToPage(user == null ? Admin == null ? "/logUser" : "/Profile" : "/Profile?user="+user.id)
+    },
+    {
+      label: "Brani",
+      icon: <LibraryMusicIcon />,
+      onClick: () => console.log("TODO")
     }
   ]
 
   return (
-    <BottomNavigation>
+    <BottomNavigation className='footer' id="footer">
       {buttons.map((button, index) => {
         return (
           <BottomNavigationAction key={index} label={button.label} icon={button.icon} onClick={button.onClick} />

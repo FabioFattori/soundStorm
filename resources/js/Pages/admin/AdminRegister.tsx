@@ -1,6 +1,6 @@
 
-import Layout from '../../Components/Layout'
-import RegisterForm from '../../Components/RegisterForm'
+import Layout from '../../Components/layout/Layout'
+import RegisterForm from '../../Components/Forms/RegisterForm'
 
 function AdminRegister() {
   return (

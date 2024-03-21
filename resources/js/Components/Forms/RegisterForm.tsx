@@ -3,7 +3,7 @@ import { useForm } from '@inertiajs/react';
 import PasswordInputComponent from './PasswordInputComponent';
 import bcrypt from "bcryptjs-react";
 import {router} from '@inertiajs/react';
-import useProps from '../Hooks/useProps';
+import useProps from '../../Hooks/useProps';
 import Loader from './Loader';
 import FeedBackHelper from './FeedBackHelper';
 import { AlertColor } from '@mui/material';

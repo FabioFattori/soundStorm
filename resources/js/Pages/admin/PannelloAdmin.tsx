@@ -1,6 +1,6 @@
 
 import useProps from '../../Hooks/useProps'
-import Layout from '../../Components/Layout';
+import Layout from '../../Components/layout/Layout';
 
 function PannelloAdmin() {
   const admin = useProps("admin") as { id: Int32List ,name: string , email: string };

@@ -5,7 +5,7 @@ import { useForm } from '@inertiajs/react';
 import {router} from '@inertiajs/react';
 import FeedBackHelper from './FeedBackHelper';
 import { AlertColor } from '@mui/material';
-import useProps from '../Hooks/useProps';
+import useProps from '../../Hooks/useProps';
 import Loader from './Loader';
 
 function LoginForm({admin=false}) {

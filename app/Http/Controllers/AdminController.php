@@ -14,7 +14,7 @@ class AdminController extends Controller
         if (Auth::guard('admin')->attempt($credentials)) {
             $request->session()->regenerate();
     
-            return redirect()->route('admin/adminPannel', ['admin'=>Auth::guard('admin')->user()]);
+            return redirect()->route('adminPannel', ['admin'=>Auth::guard('admin')->user()]);
         }
    
         // respond with error message and do not reload the page

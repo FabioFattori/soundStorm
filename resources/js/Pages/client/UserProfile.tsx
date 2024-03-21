@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
-import useProps from '../Hooks/useProps';
-import Layout from '../Components/Layout';
+
+import useProps from '../../Hooks/useProps';
+import Layout from '../../Components/Layout';
 import { router } from '@inertiajs/react';
 
 function UserProfile() {

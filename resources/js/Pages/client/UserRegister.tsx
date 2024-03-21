@@ -1,6 +1,5 @@
-import React from 'react'
-import RegisterForm from '../Components/RegisterForm'
-import Layout from '../Components/Layout'
+import RegisterForm from '../../Components/RegisterForm'
+import Layout from '../../Components/Layout'
 
 function UserRegister() {
   return (

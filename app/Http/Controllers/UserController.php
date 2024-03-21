@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function goToLogin()
     {
-        return Inertia::render('LoginUser');
+        return Inertia::render('client/LoginUser');
     }
 
     public function login(Request $request)
@@ -25,9 +25,9 @@ class UserController extends Controller
         ]);
         if (Auth::attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
-            return Inertia::render('UserProfile', ['user' => Auth::user()])->with('success', 'You are now logged in.');
+            return Inertia::render('client/UserProfile', ['user' => Auth::user()])->with('success', 'You are now logged in.');
         }
-        return Inertia::render('LoginUser', ['error' => 'The provided credentials do not match our records, maybe try to register.']);
+        return Inertia::render('client/LoginUser', ['error' => 'The provided credentials do not match our records, maybe try to register.']);
     }
 
     public function logout()
@@ -43,17 +43,17 @@ class UserController extends Controller
 
     public function goToRegister()
     {
-        return Inertia::render('UserRegister');
+        return Inertia::render('client/UserRegister');
     }
 
     public function profile()
     {
         if (Auth::user()) {
-            return Inertia::render('UserProfile', ['user' => Auth::user()]);
+            return Inertia::render('client/UserProfile', ['user' => Auth::user()]);
         } else if (Auth::guard('admin')->check()) {
-            return Inertia::render('AdminProfile', ['admin' => Auth::guard('admin')->user()]);
+            return Inertia::render('admin/AdminProfile', ['admin' => Auth::guard('admin')->user()]);
         } else {
-            return Inertia::render('UserRegister');
+            return Inertia::render('client/UserRegister');
         }
     }
 
@@ -70,7 +70,7 @@ class UserController extends Controller
             'password' => $request->password,
         ]);
         Auth::login($user);
-        return Inertia::render('UserProfile', ['user' => Auth::user()])->with('success', 'You are now logged in.');
+        return Inertia::render('client/UserProfile', ['user' => Auth::user()])->with('success', 'You are now logged in.');
     }
 
 }

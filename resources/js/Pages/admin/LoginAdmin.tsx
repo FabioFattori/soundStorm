@@ -1,6 +1,5 @@
-import React from 'react'
-import LoginForm from '../Components/LoginForm'
-import Layout from '../Components/Layout'
+import LoginForm from '../../Components/LoginForm'
+import Layout from '../../Components/Layout'
 
 function LoginAdmin() {
     return (

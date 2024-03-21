@@ -1,5 +1,5 @@
-import React, { ReactElement } from "react";
-import Layout from "../Components/Layout";
+import { ReactElement } from "react";
+import Layout from "../../Components/Layout";
 
 export default function home(): ReactElement {
     return (

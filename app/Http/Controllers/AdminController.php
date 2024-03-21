@@ -14,20 +14,20 @@ class AdminController extends Controller
         if (Auth::guard('admin')->attempt($credentials)) {
             $request->session()->regenerate();
     
-            return redirect()->route('adminPannel', ['admin'=>Auth::guard('admin')->user()]);
+            return redirect()->route('admin/adminPannel', ['admin'=>Auth::guard('admin')->user()]);
         }
    
         // respond with error message and do not reload the page
-        return Inertia::render('LoginAdmin')->with('error','The credentials do not match our records , maybe you are not an admin.');
+        return Inertia::render('admin/LoginAdmin')->with('error','The credentials do not match our records , maybe you are not an admin.');
     }
 
     function adminPannel(){
            
         
             if (Auth::guard('admin')->check()) {
-                return Inertia::render('PannelloAdmin',['admin'=>Auth::guard('admin')->user()]);
+                return Inertia::render('admin/PannelloAdmin',['admin'=>Auth::guard('admin')->user()]);
             } else {
-                return Inertia::render('LoginAdmin');
+                return Inertia::render('admin/LoginAdmin');
             }
         
     }
@@ -38,11 +38,11 @@ class AdminController extends Controller
     }
 
     public function goToRegister(){
-        return Inertia::render('AdminRegister');
+        return Inertia::render('admin/AdminRegister');
     }
 
     public function goToLogin(){
-        return Inertia::render('LoginAdmin');
+        return Inertia::render('admin/LoginAdmin');
     }
 
     public function register(Request $request){
@@ -62,6 +62,6 @@ class AdminController extends Controller
             'password' => $request->password,
         ]);
         Auth::guard('admin')->login($admin);
-        return Inertia::render('PannelloAdmin',['admin'=>Auth::guard('admin')->user()])->with('success','You are now logged in.');
+        return Inertia::render('admin/PannelloAdmin',['admin'=>Auth::guard('admin')->user()])->with('success','You are now logged in.');
     }
 }

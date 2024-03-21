@@ -1,6 +1,6 @@
-import React from 'react'
-import Layout from '../Components/Layout'
-import RegisterForm from '../Components/RegisterForm'
+
+import Layout from '../../Components/Layout'
+import RegisterForm from '../../Components/RegisterForm'
 
 function AdminRegister() {
   return (

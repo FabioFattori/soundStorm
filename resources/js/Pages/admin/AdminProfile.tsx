@@ -1,6 +1,6 @@
-import React from 'react'
-import Layout from '../Components/Layout'
-import useProps from '../Hooks/useProps'
+
+import Layout from '../../Components/Layout'
+import useProps from '../../Hooks/useProps'
 import { router } from '@inertiajs/react';
 
 function AdminProfile() {

@@ -1,6 +1,6 @@
-import React from 'react'
-import Layout from '../Components/Layout'
-import LoginForm from '../Components/LoginForm'
+
+import Layout from '../../Components/Layout'
+import LoginForm from '../../Components/LoginForm'
 
 function LoginUser() {
   return (

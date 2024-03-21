@@ -11,9 +11,9 @@ Route::get('/', function () {
     if(Auth::user()){
         return Inertia::render('Home',['user'=>Auth::user()]);
     }else if(Auth::guard('admin')->check()){
-        return Inertia::render('Home',['admin'=>Auth::guard('admin')->user()]);
+        return Inertia::render('client/Home',['admin'=>Auth::guard('admin')->user()]);
     }
-    return Inertia::render('Home');
+    return Inertia::render('client/Home');
 });
 
 Route::get("/adminPannel",[AdminController::class,"adminPannel"])->name("adminPannel");

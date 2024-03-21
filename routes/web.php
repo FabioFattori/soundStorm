@@ -2,17 +2,31 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
+    if(Auth::user()){
+        return Inertia::render('Home',['user'=>Auth::user()]);
+    }else if(Auth::guard('admin')->check()){
+        return Inertia::render('Home',['admin'=>Auth::guard('admin')->user()]);
+    }
     return Inertia::render('Home');
 });
 
 Route::get("/adminPannel",[AdminController::class,"adminPannel"])->name("adminPannel");
-Route::get("/logAdmin",[AdminController::class,"loginAdmin"]);
-
+Route::get("/loginAdmin",[AdminController::class,"loginAdmin"]);
+Route::get("/logUser",[UserController::class,"goToLogin"]);
+Route::get("/registerUser",[UserController::class,"goToRegister"]);
+Route::post("/regUser",[UserController::class,"register"]);
+Route::get("/logOut",[UserController::class,"logout"]);
+Route::get("/loginUser",[UserController::class,"login"]);
+Route::get("/registerAdmin",[AdminController::class,"goToRegister"]);
+Route::get("/Profile",[UserController::class,"profile"]);
+Route::post("/regAdmin",[AdminController::class,"register"]);
+Route::get("/logAdmin",[AdminController::class,"goToLogin"]);
 
 
 
@@ -36,9 +50,7 @@ Route::get('/fill', function () {
 
 //create a route that delete the fill data from the db
 Route::get('/delete', function () {
-    App\Models\playlist::select('name',"playlist")->delete();
-    App\Models\brano::select('titolo',"brano")->delete();
-    App\Models\admin::select('name',"admin")->delete();
+    App\Models\User::select('*')->delete();
 
     echo 'puppets data are now deleted from the db';
 });

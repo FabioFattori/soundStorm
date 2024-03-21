@@ -31,4 +31,32 @@ class AdminController extends Controller
             }
         
     }
+
+    public function logout(){
+        Auth::guard('admin')->logout();
+        return redirect('/')->with('success','You are now logged out.');
+    }
+
+    public function goToRegister(){
+        return Inertia::render('AdminRegister');
+    }
+
+    public function goToLogin(){
+        return Inertia::render('LoginAdmin');
+    }
+
+    public function register(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+        $admin = admin::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+        ]);
+        Auth::guard('admin')->login($admin);
+        return Inertia::render('PannelloAdmin',['admin'=>Auth::guard('admin')->user()])->with('success','You are now logged in.');
+    }
 }
